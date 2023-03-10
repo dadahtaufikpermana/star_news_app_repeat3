@@ -5,8 +5,8 @@ import '../controllers/detail_news_controller.dart';
 class DetailNewsBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<DetailnewsController>(
-      () => DetailnewsController(),
+    Get.lazyPut<DetailNewsController>(
+      () => DetailNewsController(),
     );
   }
 }

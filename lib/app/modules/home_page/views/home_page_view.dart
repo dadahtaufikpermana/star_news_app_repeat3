@@ -22,22 +22,27 @@ class HomePageView extends GetView<HomePageController> {
         backgroundColor: Colors.white,
         title: const Text('StarsNews', style: TextStyle(color: Colors.black),),
       ),
-      backgroundColor: Colors.green,
-      body: Obx(() => SingleChildScrollView(
-        child: Column(
-          children: [
-            ...homeController.listNews.reversed.map(
-                  (element) => ListNews(
-                title: element.title,
-                description: element.body,
-                id: element.id.toString(),
-              ),
-            )
-          ],
+      backgroundColor: Colors.indigo,
+      body: Obx(() => controller.isLoading.value
+          ?CircularProgressIndicator()
+          :RefreshIndicator(
+        onRefresh: () => controller.refreshListNews(),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              ...homeController.listNews.reversed.map(
+                    (element) => CardWidget(
+                  title: element.title,
+                  description: element.body,
+                  id: element.id.toString(),
+                ),
+              )
+            ],
+          ),
         ),
       )),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.toNamed(Routes.SPLASH),
+        onPressed: () => Get.toNamed(Routes.CREATE_NEWS),
         backgroundColor: Colors.blue,
         child: const Icon(Icons.add),
       ),
