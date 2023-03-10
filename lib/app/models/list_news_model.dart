@@ -2,18 +2,11 @@
 //
 //     final listNewsModel = listNewsModelFromJson(jsonString);
 
-// To parse this JSON data, do
-//
-//     final listNewsModel = listNewsModelFromJson(jsonString);
-
 import 'dart:convert';
 
-List<ListNewsModel> listNewsModelFromJson(String str) =>
-    List<ListNewsModel>.from(
-        json.decode(str).map((x) => ListNewsModel.fromJson(x)));
+List<ListNewsModel> listNewsModelFromJson(String str) => List<ListNewsModel>.from(json.decode(str).map((x) => ListNewsModel.fromJson(x)));
 
-String listNewsModelToJson(List<ListNewsModel> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String listNewsModelToJson(List<ListNewsModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class ListNewsModel {
   ListNewsModel({
@@ -23,10 +16,10 @@ class ListNewsModel {
     required this.body,
   });
 
-  final int userId;
-  final int id;
-  final String title;
-  final String body;
+  int userId;
+  int id;
+  String title;
+  String body;
 
   factory ListNewsModel.fromJson(Map<String, dynamic> json) => ListNewsModel(
     userId: json["userId"],

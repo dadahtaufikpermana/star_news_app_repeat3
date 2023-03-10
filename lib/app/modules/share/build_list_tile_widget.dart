@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../routes/app_pages.dart';
+import '../home_page/controllers/home_page_controller.dart';
 
-class ListNews extends StatelessWidget {
-  const ListNews(
+class CardWidget extends GetView<HomePageController> {
+  const CardWidget(
       {super.key,
         required this.title,
         required this.description,
@@ -28,6 +29,12 @@ class ListNews extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            ListTile(
+              trailing: IconButton(
+                onPressed: () => controller.deleteNews(userId: controller.listNews.value.toString()),
+                icon: Icon(Icons.close, color: Colors.black,),
+              ),
+            ),
             Text(
               title,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -35,7 +42,7 @@ class ListNews extends StatelessWidget {
             SizedBox(
               height: 14,
             ),
-            Text(description)
+            Text(description),
           ],
         ),
       ),

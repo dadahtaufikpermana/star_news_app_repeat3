@@ -1,5 +1,5 @@
-import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 import '../../../data/news_service.dart';
 import '../../../models/list_news_model.dart';
 
@@ -14,19 +14,35 @@ class HomePageController extends GetxController {
     getListNews();
   }
 
-  getListNews() async {
-    isLoading(true);
-    try {
-      final response = await newsService.getNews();
-      response.map((v) {
-        print(v);
-        final news = ListNewsModel.fromJson(v);
-        listNews.add(news);
-      }).toList();
-      isLoading(false);
-    } catch (e) {
-      isLoading(false);
-      print(e.toString());
+  Future<void> refreshListNews() async{
+    listNews.clear();
+    await getListNews();
+  }
+
+  Future<void> getListNews() async{
+    isLoading.toggle();
+    try{
+      final response = await NewsService().getNews();
+      // listNews.clear();
+      listNews.addAll(response as Iterable<ListNewsModel>);
+      isLoading.toggle();
+    } catch(e){
+      isLoading.toggle();
+      Get.snackbar("Error", e.toString());
+    }
+  }
+
+  Future deleteNews({required String userId}) async{
+    isLoading.toggle();
+    try{
+      final response = await NewsService().deleteNewsService(id: userId);
+      Logger().d(response);
+      await refreshListNews();
+      isLoading.toggle();
+      Get.snackbar("Deleted", "You have deleted article!");
+    } catch(e){
+      isLoading.toggle();
+      Get.snackbar("Error", e.toString());
     }
   }
 }

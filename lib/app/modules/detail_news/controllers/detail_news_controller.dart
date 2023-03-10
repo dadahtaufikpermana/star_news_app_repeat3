@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../../data/news_service.dart';
 import '../../../models/detail_news_model.dart';
 
-class DetailnewsController extends GetxController {
+class DetailNewsController extends GetxController {
   RxBool isLoading = false.obs;
   String id = '';
   Rx<DetailNewsModel> detailNews = DetailNewsModel().obs;

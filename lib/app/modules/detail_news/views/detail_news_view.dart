@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 
 import '../controllers/detail_news_controller.dart';
 
-class DetailnewsView extends GetView<DetailnewsController> {
-  final DetailnewsController detailnewsController =
-  Get.put(DetailnewsController());
+class DetailNewsView extends GetView<DetailNewsController> {
+  final DetailNewsController detailnewsController =
+  Get.put(DetailNewsController());
 
   @override
   Widget build(BuildContext context) {

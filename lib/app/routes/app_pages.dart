@@ -36,7 +36,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.DETAIL_NEWS,
-      page: () => DetailnewsView(),
+      page: () => DetailNewsView(),
       binding: DetailNewsBinding(),
     ),
     GetPage(
