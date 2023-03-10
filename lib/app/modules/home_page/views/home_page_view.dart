@@ -37,7 +37,7 @@ class HomePageView extends GetView<HomePageController> {
         ),
       )),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.toNamed(Routes.SPLASH),
+        onPressed: () => Get.toNamed(Routes.CREATE_NEWS),
         backgroundColor: Colors.blue,
         child: const Icon(Icons.add),
       ),
