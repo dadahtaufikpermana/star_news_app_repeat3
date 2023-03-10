@@ -4,7 +4,6 @@ import '../../../data/news_service.dart';
 import '../../../models/list_news_model.dart';
 
 class HomePageController extends GetxController {
-  final dio = Dio();
   RxBool isLoading = false.obs;
   RxList<ListNewsModel> listNews = <ListNewsModel>[].obs;
   final newsService = NewsService();

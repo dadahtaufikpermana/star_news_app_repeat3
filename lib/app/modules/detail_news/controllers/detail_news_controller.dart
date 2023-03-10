@@ -5,7 +5,6 @@ import '../../../data/news_service.dart';
 import '../../../models/detail_news_model.dart';
 
 class DetailnewsController extends GetxController {
-  final dio = Dio();
   RxBool isLoading = false.obs;
   String id = '';
   Rx<DetailNewsModel> detailNews = DetailNewsModel().obs;
